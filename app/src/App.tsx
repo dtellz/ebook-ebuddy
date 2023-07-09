@@ -3,6 +3,7 @@ import logo from './logo.png';
 import './App.css';
 import { Button, TextField, Box, OutlinedInput } from '@mui/material';
 import styled from '@emotion/styled';
+import axios from 'axios';
 
 const Input = styled('input')({
   display: 'none',
@@ -13,11 +14,20 @@ function App() {
   const [isFileLoaded, setIsFileLoaded] = useState(false);
   const [textFieldWidth, setTextFieldWidth] = useState(13);
 
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('New file selected', event.target.files![0].name)
+  const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     let doc = event.target.files![0];
-    setTextFieldWidth(Math.min(doc.name.length, 30));
+    if (!isFileLoaded) setTextFieldWidth(Math.min(doc.name.length, 30));
     setFile(doc ? doc.name : '');
+    setIsFileLoaded(true);
+    // Send file to backend
+    const formData = new FormData();
+    formData.append('file', doc);
+    const serverResponse = await axios.post('/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log('DEBUG -> ', serverResponse);
   }
 
   const onFileUpload = () => {
