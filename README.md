@@ -5,3 +5,9 @@
 </p>
 
 #TBD
+
+Run server locally:
+
+```bash
+source venv/bin/activate
+```
