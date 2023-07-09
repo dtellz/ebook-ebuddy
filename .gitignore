@@ -1,6 +1,7 @@
 # Flask
 server/venv
 server/__pycache__
+server/.flaskenv
 
 # dependencies
 app/node_modules
