@@ -1,4 +1,10 @@
+# Django stuff:
 server/db.sqlite3
+server/server/*.log
+server/server/*.pot
+server/server/*.pyc
+server/server/__pycache__/
+server/server/media
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
