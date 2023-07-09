@@ -5,7 +5,7 @@ def loadEpub(file):
     print('Loading EPUB file...')
     epub = UnstructuredEPubLoader(file)
     print('EPUB file loaded.')
-    data = epub.load()
-    return data
+    documents = epub.load()
+    return documents
 
 
